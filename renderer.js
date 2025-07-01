@@ -1,5 +1,5 @@
 const client_id                     = '3e32b0815b2145a1b59dc82f53fbd0df';
-const client_secret                 = 'db5ee978c19d41959c9d1ae1c0e53335';
+const client_secret                 = 'c16ef38eec3b419b9e0bea7f8a3cefde';
 
 const filterAlbumBtn                = document.getElementById("filter-album-button");
 const sortAlbumBtn                  = document.getElementById("sort-album-button");
@@ -48,17 +48,14 @@ const textPopup                     = document.getElementById("text-popup");
 
 //return token based on client_id and client_secret
 async function getToken() {
-    const response = await fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Basic ' + btoa(`${client_id}:${client_secret}`),
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({ grant_type: 'client_credentials' })
-    });
-
-    const data = await response.json();
-    return data.access_token;
+    try {
+        const token = await window.versions.getToken();
+        console.log("got token!", token);
+        return token;
+    }
+    catch (err) {
+        console.log("Error getting token! From renderer.");
+    }
 }
 
 //returns album based on link in JSON format

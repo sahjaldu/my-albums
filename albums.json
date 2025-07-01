@@ -1,3 +1,20 @@
 [
-
+  {
+    "name": "Yumeno Garden",
+    "cover": "https://i.scdn.co/image/ab67616d0000b273b38a6a74259dccc230b9f326",
+    "artist": "Last Dinosaurs",
+    "link": "https://open.spotify.com/album/32S8pHV6mMJTg5lLZeb3sr",
+    "date_listened": "2025-07-01",
+    "favorite": false,
+    "description": ""
+  },
+  {
+    "name": "In A Million Years (10 Year Anniversary Edition)",
+    "cover": "https://i.scdn.co/image/ab67616d0000b2736a668965b13fc4040626cf18",
+    "artist": "Last Dinosaurs",
+    "link": "https://open.spotify.com/album/49NRpUWTRm8DJBodGtLzjN",
+    "date_listened": "2025-07-01",
+    "favorite": false,
+    "description": ""
+  }
 ]

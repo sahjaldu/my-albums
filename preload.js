@@ -50,6 +50,8 @@ contextBridge.exposeInMainWorld('versions', {
     //     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
     // }
 
+    getToken: () => ipcRenderer.invoke('getSpotifyToken'),
+
     readAlbums: safeRead,
 
     writeAlbum: (album) => {
