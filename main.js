@@ -59,7 +59,7 @@ ipcMain.handle('getSpotifyToken', async () => {
         return data.access_token;
     }
     catch (err) {
-        console.log("failed to get token", err)
+        console.log("failed to get token.", err)
         throw err;
     }
 });
