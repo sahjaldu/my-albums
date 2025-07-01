@@ -1,0 +1,446 @@
+* {
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text: #e4e4eb;
+    --background: #08080b;
+    --primary: #aeafc2;
+    --secondary: #494949;
+    --accent: #a3a3a3;
+}
+
+/* HTML AND BODY */
+
+html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    background-color: var(--background);
+    width: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* HEADER MAIN FOOTER */
+
+main {
+    width: auto;
+    height: auto;
+    /* border: 1px solid blue; */
+    padding: 2rem;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+footer {
+    width: auto;
+    height: 3rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* MAIN CONTENTS */
+
+#navigation {
+    width: 40%;
+    padding: 1rem;
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    color: var(--text);
+}
+
+#album-container {
+    width: 200px;
+    /* margin: 2rem; */
+    /* border: 1px solid green; */
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 1rem;
+    height: 85vh;
+    overflow: auto;
+}
+
+#album-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#album-container::-webkit-scrollbar-button {
+    display: none;
+}
+#album-container::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Show and style only the scrollbar thumb */
+#album-container::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+#album-container::-webkit-scrollbar-thumb {
+  background-color: var(--accent);  /* Visible thumb */
+  border-radius: 0;
+}
+
+.album {
+    width: 100px;
+    height: 100px;
+}
+
+/* NAVIGATION CONTENTS */
+
+h1, h3, p, hr, input {
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.25rem;
+    background-color: var(--background);
+    border: 1px solid var(--text);
+    color: var(--text);
+    border-radius: 0;
+}
+
+input[type="text"]:focus-visible {
+    outline: 1px solid var(--text);
+    border-radius: 0;
+}
+
+button {
+    background-color: var(--background);
+    border: 1px solid var(--text);
+    color: var(--text);
+    border-radius: 0;
+    padding: 0.25rem;
+}
+
+button:hover {
+    background-color: var(--text);
+    color: var(--background);
+}
+
+button:active {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+#navigation > button {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#filter-options, #sort-options {
+    border: 1px dashed var(--text);
+    border-top: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: -1rem;
+}
+
+#filter-options > * {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#filter-time-options {
+    margin-bottom: 0.5rem;
+}
+
+#filter-time-slider {
+    width: 45%;
+}
+
+#filter-time-slider::-webkit-slider-runnable-track {
+    background-color: var(--background);
+    border: 1px solid var(--text);
+    border-radius: 25px;
+}
+ 
+#filter-time-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: var(--text);
+    border: 1px solid var(--background);
+    border-radius: 0;
+    /* margin-top: -7px; centers it vertically */
+    cursor: pointer;
+}
+
+#filter-time-slider-label, #filter-favorite-button-label {
+    font-size: 1rem;
+    margin-left: auto;
+}
+
+#filter-time-slider-label::before {
+    content: '--- ';
+}
+
+#filter-favorite-button {
+    width: 40%;
+    top: 1rem;
+}
+
+#sort-options input {
+    display: none;
+}
+
+#sort-options > * {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#sort-options h4 {
+    margin-right: auto;
+}
+
+#sort-options label {
+    background-color: var(--background);
+    border: 1px solid var(--text);
+    color: var(--text);
+    border-radius: 0;
+    padding: 0.25rem;
+    font-size: 1rem;
+    width: 30%;
+    text-align: center;
+}
+
+#sort-options label:hover, #sort-options input:checked + label {
+    background-color: var(--text);
+    color: var(--background);
+}
+
+a { color: var(--text); }
+a:hover { color: var(--accent); }
+a:active { color: var(--text); }
+
+/* ADD-ALBUM-POPUP */
+
+#add-album-popup {
+    width: 50%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 25%;
+    transform: translate(0, calc(50vh - 50%));
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+    padding: 1rem;
+}
+
+#add-album-popup-seperator-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.add-album-popup-seperator {
+    height: 2.5rem;
+    width: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#album-date-input,  #album-info-date-listened-input {
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+    padding: 0.25rem;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+}
+
+label {
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.1s ease;
+    user-select: none;
+    margin-bottom: 0.5rem;
+}
+
+#album-favorite-checkbox:checked + label {
+    color: goldenrod;
+}
+
+#add-album-popup textarea {
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+    width: 100%;
+    padding: 0.25rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+#submit-link, #close-popup {
+    width: calc(50% - 2px);
+    padding: 0.25rem;
+}
+
+.hide {
+    visibility: hidden;
+    display: none;
+}
+
+/* ALBUM INFO POPUP */
+
+#album-info-popup {
+    width: 60%;
+    min-height: 40%;
+    height: auto;
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+    position: fixed;
+    left: 20%;
+    transform: translate(0, calc(50vh - 50%));
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Stuff that is the same in edit mode */
+
+#album-info-cover {
+    width: 20rem;
+    height: 20rem;
+}
+
+#album-info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+#album-info-meta {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Stuff that changed in edit mode */
+
+#album-info-favorite-text {
+    color: goldenrod;
+    font-size: 1.2rem;
+}
+
+#album-info-favorite-input {
+    display: none;
+}
+
+#album-info-favorite-input:checked + label {
+    color: goldenrod;
+}
+
+#album-info-comments {
+    margin-bottom: 1rem;
+    flex-grow: 4;
+}
+
+#album-info-comments-text, #album-info-comments-input {
+    background-color: var(--secondary);
+    padding: 0.25rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    /* max-height: 10rem; */
+    overflow: auto;
+    color: var(--text);
+}
+
+#album-info-comments-text {
+    height: 100%;
+}
+
+#album-info-comments-input {
+    width: 100%;
+    height: 100%;
+}
+
+#album-info-comments-text::-webkit-scrollbar-track,
+#album-info-comments-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#album-info-comments-text::-webkit-scrollbar-button,
+#album-info-comments-input::-webkit-scrollbar-button {
+    display: none;
+}
+
+#album-info-comments-text::-webkit-scrollbar-corner,
+#album-info-comments-input::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Show and style only the scrollbar thumb */
+#album-info-comments-text::-webkit-scrollbar,
+#album-info-comments-input::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+#album-info-comments-text::-webkit-scrollbar-thumb,
+#album-info-comments-input::-webkit-scrollbar-thumb {
+  background-color: var(--accent);  /* Visible thumb */
+  border-radius: 0;
+}
+
+#album-info-buttons {
+    margin-top: auto;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#album-info-buttons > * {
+    width: calc(50% - 0.5rem);
+    padding: 0.25rem;
+    height: auto;
+}
+
+/* Text popup */
+
+#text-popup {
+    width: 40%;
+    height: auto;
+    padding: 1rem;
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--text);
+    position: fixed;
+    left: 30%;
+    transform: translate(0, calc(50vh - 50%));
+}
+
+#text-popup button {
+    width: 25%;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="
+            default-src 'self'; 
+            script-src 'self'; 
+            connect-src 'self' https://accounts.spotify.com https://api.spotify.com;
+            img-src 'self' https://i.scdn.co; 
+            style-src 'self' 'unsafe-inline';
+        "/>
+        <title>My Albums</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main>
+            <div id="navigation">
+                <h1>Sahat's Albums</h1>
+                <p>These are all the albums I've listened to!</p>
+                <hr><br>
+                <h3>Search</h3>
+                <input type="text" name="Search" id="search-input">
+                <br><br>
+                <h3>Change</h3>
+                <button id="add-album-button">Add</button>
+                <button id="filter-album-button">Filter</button>
+                <div id="filter-options" class="hide">
+                    <div id="filter-time-options">
+                        <h4>Time: </h4>
+                        <input type="range" id="filter-time-slider" min="0" max="4" value="0"/>
+                        <label for="filter-time-slider" id="filter-time-slider-label"></label>
+                    </div>
+                    <div id="filter-favorite-options">
+                        <h4>Favorite: </h4>
+                        <button id="filter-favorite-button">Favorite</button>
+                        <label for="filter-favorite-button" id="filter-favorite-button-label"></label>
+                    </div>
+                </div>
+                <button id="sort-album-button">Sort</button>
+                <div id="sort-options" class="hide">
+                    <div id="sort-date-options">
+                        <h4>Date: </h4>
+                        <input type="radio" name="sort-option" id="date-new" class="sort-option" checked>
+                        <label for="date-new">Newest</label>
+                        <input type="radio" name="sort-option" id="date-old" class="sort-option">
+                        <label for="date-old">Oldest</label>
+                    </div>
+                    <div id="sort-name-options">
+                        <h4>Name: </h4>
+                        <input type="radio" name="sort-option" id="name-first">
+                        <label for="name-first">A-Z</label>
+                        <input type="radio" name="sort-option" id="name-last">
+                        <label for="name-last">Z-A</label>
+                    </div>
+                </div>
+            </div>
+            <div id="album-container">
+            </div>
+        </main>
+        <footer><a href="https://sahatjaldu.netlify.app">this app was made by me!</a></footer>
+        <div id="add-album-popup" class="hide">
+            <h3>Add Album Information!</h3>
+            <br>
+            <p>Spotify Link:</p>
+            <input type="text" id="album-link-input" placeholder="https://open.spotify.com/album/..." />
+            <br><br>
+            <div id="add-album-popup-seperator-container">
+                <div class="add-album-popup-seperator">
+                    <p>Date Listened:</p>
+                    <input type="date" id="album-date-input">
+                </div>
+                <div class="add-album-popup-seperator">
+                    <p>Favorite?</p>
+                    <input type="checkbox" id="album-favorite-checkbox" hidden>
+                    <label for="album-favorite-checkbox">★</label>
+                </div>
+            </div>
+            <br>
+            <p>Comments:</p>
+            <textarea id="album-comments-input" rows="5"></textarea>
+            <br><br>
+            <button id="submit-link">Submit</button>
+            <button id="close-popup">Cancel</button>
+        </div>
+        <div id="album-info-popup" class="hide">
+            <img src="https://i.scdn.co/image/ab67616d0000b273813c8bfec16e7a388ece0d05" alt="" id="album-info-cover">
+            <div id="album-info">
+                <a href="" id="album-info-link" target="_blank"><h1 id="album-info-title"></h1></a>
+                <h3 id="album-info-artist"></h3>
+                <div id="album-info-meta">
+                    <div id="album-info-date-listened">
+                        <p id="album-info-date-listened-text"></p>
+                        <input type="date" id="album-info-date-listened-input" class="hide"></input>
+                    </div>
+                    <div id="album-info-favorite">
+                        <p id="album-info-favorite-text"></p>
+                        <input type="checkbox" id="album-info-favorite-input" class="hide"></input>
+                        <label for="album-info-favorite-input" id="album-info-favorite-input-star" class="hide">★</label>
+                    </div>
+                </div>
+                <div id="album-info-comments">
+                    <pre id="album-info-comments-text"></pre>
+                    <textarea id="album-info-comments-input" class="hide"></textarea>
+                </div>
+                <div id="album-info-buttons">
+                    <button id="album-info-save" class="hide">Save</button>
+                    <button id="album-info-delete" class="hide">Delete</button>
+                    <button id="album-info-mode">Mode</button>
+                    <button id="album-info-close">Close</button>
+                </div>
+            </div>
+        </div>
+        <div id="text-popup" class="hide"></div>
+        <script src="./renderer.js"></script>
+    </body>
+</html>

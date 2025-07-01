@@ -1,0 +1,38 @@
+{
+  "name": "my-albums",
+  "version": "1.0.0",
+  "description": "This is where I store information about the albums I've listened to. This is also my introductory electron project.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahjaldu/my-albums.git"
+  },
+  "author": "sahjaldu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sahjaldu/my-albums/issues"
+  },
+  "homepage": "https://github.com/sahjaldu/my-albums#readme",
+  "devDependencies": {
+    "electron": "^37.1.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.sahat.albumstack",
+    "productName": "AlbumStack",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
+  }
+}

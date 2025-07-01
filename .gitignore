@@ -1,0 +1,39 @@
+# Node modules
+node_modules/
+
+# Build output
+release/
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode workspace settings
+.vscode/
+
+# Environment variables
+.env
+.env.*
+
+# npm debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Ignore user data (if you want to keep albums.json out of repo)
+# albums.json
+
+# Optional: ignore temp files and caches
+.cache
+
+# Electron build output
+/release
+/dist
+/out
+*.exe
+*.snap
+*.AppImage
