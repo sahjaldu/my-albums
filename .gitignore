@@ -37,3 +37,4 @@ yarn-error.log*
 *.exe
 *.snap
 *.AppImage
+main.js
