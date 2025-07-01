@@ -110,7 +110,7 @@ function openInfo(album) {
     albumInfoTitle.textContent = album.name;
     albumInfoLink.href = album.link;
     albumInfoArtist.textContent = album.artist;
-    albumInfoDateListenedText.textContent = new Date(album.date_listened).toLocaleDateString('en-US', {
+    albumInfoDateListenedText.textContent = new Date(album.date_listened + "T00:00:00").toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
