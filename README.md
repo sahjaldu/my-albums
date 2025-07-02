@@ -11,3 +11,4 @@ This is a personal app that I made to store information about the album's I've l
 - [ ] Find artist as well as album
 - [ ] More Error Messages
 - [ ] Code Cleanup
+- [ ] Make executable available for download
