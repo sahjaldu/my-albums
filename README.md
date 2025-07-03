@@ -7,8 +7,9 @@ This is a personal app that I made to store information about the album's I've l
 ## Todo
 
 - [ ] Add a counter for the of albums on screen
-- [ ] Scroll through Albums using the arrow keys
-- [ ] Find artist as well as album
-- [ ] More Error Messages
+- [x] Scroll through Albums using the arrow keys
+- [x] Find artist as well as album
+- [x] More Error Messages
 - [ ] Code Cleanup
 - [ ] Make executable available for download
+- [ ] Add dropdown to search bar

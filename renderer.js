@@ -131,7 +131,7 @@ function processAlbums() {
     if (searchInput.value) {
         albums = albums.filter(a => 
             a.name.toLowerCase().includes(searchInput.value) || a.name.includes(searchInput.value)
-            // || a.artist.toLowerCase().includes(searchInput.value)
+            || a.artist.toLowerCase().includes(searchInput.value) || a.artist.includes(searchInput.value)
         );
         console.log(albums);
     }
@@ -181,10 +181,11 @@ function processAlbums() {
         albums = albums.sort((a, b) => b.name.localeCompare(a.name));
     }
 
-    loadAlbums(albums);
+    return albums;
 }
 
-function loadAlbums(albums) {
+function loadAlbums() {
+    albums = processAlbums()
     const album_container = document.getElementById("album-container");
     console.log("Loaded albums:", albums);
     album_container.innerHTML = "";
@@ -205,7 +206,7 @@ function loadAlbums(albums) {
     });
 }
 
-processAlbums();
+loadAlbums();
 
 // TEXT POPUP
 
@@ -260,14 +261,14 @@ submitLinkBtn.addEventListener("click", async () => {
     if (!link) return;
     try {
         await insertAlbum(link, date, favorite, comments);
-        processAlbums();
+        loadAlbums();
         if (!addAlbumPopup.classList.contains("hide")) {
             addAlbumPopup.classList.add("hide");
         }
     }
     catch (err) {
         console.error("Failed to add album:", err);
-        alert("Failed to add album. Check the link and try again.");
+        textPopup("Failed to add album. Check the link and try again.");
     }
 });
 
@@ -355,7 +356,7 @@ albumInfoSaveBtn.addEventListener('click', () => {
         textPopup.classList.add("hide");
         switchInfoMode('text');
         openInfo(albumDataSearch(albumInfoTitle.textContent));
-        processAlbums();
+        loadAlbums();
     });
     openTextPopup("Are you sure you want to override album data?", yesButton);
 });
@@ -368,14 +369,14 @@ albumInfoDeleteBtn.addEventListener('click', () => {
         textPopup.classList.add("hide");
         switchInfoMode('text');
         albumInfoPopup.classList.add('hide');
-        processAlbums();
+        loadAlbums();
     });
     openTextPopup("Are you sure you want to delete this album? It cannot be undone.", yesButton);
 });
 
 // FILTERS
 
-searchInput.addEventListener('input', processAlbums);
+searchInput.addEventListener('input', loadAlbums);
 
 filterAlbumBtn.addEventListener('click', () => {
     if (filterOptions.classList.contains('hide')) {
@@ -389,14 +390,14 @@ filterAlbumBtn.addEventListener('click', () => {
 function updateSliderLabel() {
     const options = ["All Time", "Last Year", "Last 6 Months", "Last Month", "Last Week"];
     filterTimeSliderLabel.textContent = options[filterTimeSlider.value];
-    processAlbums();
+    loadAlbums();
 }
 
 updateSliderLabel();
 
 filterTimeSlider.addEventListener("input", () => {
     updateSliderLabel();
-    processAlbums();
+    loadAlbums();
 });
 
 filterFavoriteButton.addEventListener('click', () => {
@@ -406,7 +407,7 @@ filterFavoriteButton.addEventListener('click', () => {
     else {
         filterFavoriteButtonLabel.textContent = "";
     }
-    processAlbums();
+    loadAlbums();
 });
 
 sortAlbumBtn.addEventListener('click', () => {
@@ -432,6 +433,20 @@ document.addEventListener("keydown", function (event) {
         if (searchInput) {
             searchInput.focus();
             searchInput.select(); // optional: selects existing text
+        }
+    }
+    if (event.key == 'ArrowLeft') {
+        const albums = document.querySelectorAll(".album");
+        const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) - 1;
+        if (index >= 0) {
+            openInfo(albumDataSearch(albums[index].name));
+        }
+    }
+    if (event.key == 'ArrowRight') {
+        const albums = document.querySelectorAll(".album");
+        const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) + 1;
+        if (index <= albums.length - 1) {
+            openInfo(albumDataSearch(albums[index].name));
         }
     }
 });
