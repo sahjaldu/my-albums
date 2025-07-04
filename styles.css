@@ -30,6 +30,10 @@ body {
     justify-content: space-between;
 }
 
+:focus {
+    outline: 2px solid var(--text);
+}
+
 /* HEADER MAIN FOOTER */
 
 main {
@@ -61,6 +65,8 @@ footer {
     /* border: 1px solid red; */
     border-radius: 10px;
     color: var(--text);
+    display: flex;
+    flex-direction: column;
 }
 
 #album-container {
@@ -229,6 +235,14 @@ button:active {
 #sort-options label:hover, #sort-options input:checked + label {
     background-color: var(--text);
     color: var(--background);
+}
+
+#data-container {
+    margin-top: auto;
+}
+
+#data-container p {
+    font-size: 0.75rem;
 }
 
 a { color: var(--text); }

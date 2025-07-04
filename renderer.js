@@ -17,6 +17,9 @@ const sortDateOld                   = document.getElementById("date-old");
 const sortNameFront                 = document.getElementById("name-first");
 const sortNameBack                  = document.getElementById("name-last");
 
+const dataContainer                 = document.getElementById("data-container");
+const albumNumber                   = document.getElementById("album-number");
+
 const openAlbumPopupBtn             = document.getElementById("add-album-button");
 const addAlbumPopup                 = document.getElementById("add-album-popup");
 const closeAlbumPopupBtn            = document.getElementById("close-popup");
@@ -99,6 +102,7 @@ async function insertAlbum(link, date_listened=new Date().getDate(), favorite=fa
 
     } catch (err) {
         console.error("Failed to load album:", err);
+        openTextPopup("Failed to insert album.");
     }
 }
 
@@ -204,6 +208,7 @@ function loadAlbums() {
 
         album_container.appendChild(album_image);
     });
+    albumNumber.textContent = `Albums: ${albums.length}`;
 }
 
 loadAlbums();
@@ -420,7 +425,7 @@ sortAlbumBtn.addEventListener('click', () => {
 });
 
 [ sortDateNew, sortDateOld, sortNameFront, sortNameBack ].forEach((btn) => 
-    btn.addEventListener('click', processAlbums)
+    btn.addEventListener('click', loadAlbums)
 );
 
 
@@ -447,6 +452,21 @@ document.addEventListener("keydown", function (event) {
         const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) + 1;
         if (index <= albums.length - 1) {
             openInfo(albumDataSearch(albums[index].name));
+        }
+    }
+    if (event.key == 'Escape') {
+        if (!textPopup.classList.contains('hide')) {
+            textPopup.classList.add('hide');
+            return;
+        }
+        if (!addAlbumPopup.classList.contains('hide')) {
+            addAlbumPopup.classList.add('hide');
+            return;
+        }
+        if (!albumInfoPopup.classList.contains('hide')) {
+            albumInfoPopup.classList.add('hide');
+            switchInfoMode('text');
+            return;
         }
     }
 });

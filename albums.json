@@ -9,20 +9,20 @@
     "description": ""
   },
   {
-    "name": "In A Million Years (10 Year Anniversary Edition)",
-    "cover": "https://i.scdn.co/image/ab67616d0000b2736a668965b13fc4040626cf18",
-    "artist": "Last Dinosaurs",
-    "link": "https://open.spotify.com/album/49NRpUWTRm8DJBodGtLzjN",
-    "date_listened": "2025-07-01",
-    "favorite": true,
-    "description": "E"
-  },
-  {
     "name": "Ceres & Calypso in the Deep Time",
     "cover": "https://i.scdn.co/image/ab67616d0000b2735410c06685415d50ea87a012",
     "artist": "Candy Claws",
     "link": "https://open.spotify.com/album/5KkGAZrad4N4rc5FriwgzU",
     "date_listened": "2025-07-03",
+    "favorite": false,
+    "description": ""
+  },
+  {
+    "name": "vent",
+    "cover": "https://i.scdn.co/image/ab67616d0000b27315f2ab97789e3b3a53333f85",
+    "artist": "Serph",
+    "link": "https://open.spotify.com/album/0mRbc14kEqpoZXumZ2MgWZ",
+    "date_listened": "2025-07-04",
     "favorite": false,
     "description": ""
   }
