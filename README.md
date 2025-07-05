@@ -13,3 +13,4 @@ This is a personal app that I made to store information about the album's I've l
 - [ ] Code Cleanup
 - [ ] Make executable available for download
 - [ ] Add dropdown to search bar
+- [ ] Full screen view of albums
