@@ -15,3 +15,5 @@ This is a personal app that I made to store information about the album's I've l
 - [ ] Add dropdown to search bar
 - [ ] Full screen view of albums
 - [ ] Nicer Animations
+- [ ] Alternate View of Albums, like a list view
+- [ ] Filter by description/no description

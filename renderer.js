@@ -441,17 +441,21 @@ document.addEventListener("keydown", function (event) {
         }
     }
     if (event.key == 'ArrowLeft') {
-        const albums = document.querySelectorAll(".album");
-        const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) - 1;
-        if (index >= 0) {
-            openInfo(albumDataSearch(albums[index].name));
+        if (!albumInfoPopup.classList.contains('hide')) {
+            const albums = document.querySelectorAll(".album");
+            const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) - 1;
+            if (index >= 0) {
+                openInfo(albumDataSearch(albums[index].name));
+            }
         }
     }
     if (event.key == 'ArrowRight') {
-        const albums = document.querySelectorAll(".album");
-        const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) + 1;
-        if (index <= albums.length - 1) {
-            openInfo(albumDataSearch(albums[index].name));
+        if (!albumInfoPopup.classList.contains('hide')) {
+            const albums = document.querySelectorAll(".album");
+            const index = Array.from(albums).findIndex(album => album.name == albumInfoTitle.textContent) + 1;
+            if (index <= albums.length - 1) {
+                openInfo(albumDataSearch(albums[index].name));
+            }
         }
     }
     if (event.key == 'Escape') {
@@ -467,6 +471,9 @@ document.addEventListener("keydown", function (event) {
             albumInfoPopup.classList.add('hide');
             switchInfoMode('text');
             return;
+        }
+        if (document.activeElement === searchInput) {
+            searchInput.blur();
         }
     }
 });
